@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Todos from "./components/Todos"
+import AddTodo from "./components/AddTodo"
 import Header from './layout/Header'
 
 class App extends Component {
@@ -47,7 +48,8 @@ delTodo = (id) => {
 
     return (
       <div className="App">
-        <Header />  
+        <Header /> 
+        <AddTodo /> 
         <Todos 
           do={this.state.todos} 
           markComplete={ this.markComplete } 
