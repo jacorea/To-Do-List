@@ -1,9 +1,9 @@
-<title>ToDoList React App</title>
+**ToDoList React App**
+This is a simple ToDoList React app. As any to-do-list task list users can add and delete tasks as needed.
 
-<p>This is a simple ToDoList React app. As any to-do-list task list users can add and delete tasks as needed.<p> 
+**Installation**
 
-<title>Installation</title>
-<p>Create-React-App</p> 
+Create-React-App
 
-<header>Author</header>
-<p>Jonathan Corea</p>
+**Author**
+Jonathan Corea
