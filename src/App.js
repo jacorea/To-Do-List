@@ -4,21 +4,24 @@ import Todos from "./components/Todos"
 import AddTodo from "./components/AddTodo"
 import Header from './layout/Header'
 
+//used to generate a random id
+import uuid from 'uuid'
+
 class App extends Component {
   state= {
     todos: [
       {
-        id: 1,
+        id: uuid.v4(),
         title:"take out the trash",
         completed: false
       },
       {
-        id: 2,
+        id: uuid.v4(),
         title:"dinner",
         completed: false
       },
       {
-        id: 3,
+        id: uuid.v4(),
         title:"Meeting with Boss",
         completed: false
       }
@@ -43,19 +46,35 @@ delTodo = (id) => {
    todo.id !== id)]})
 }
 
+//Adds a task to the Todo List
+addTodo = (title) => {
+  //creating a newTodo variable 
+  //using spread operator to copy state while updating it with new todo task
+  const newTodo = {
+    id: uuid.v4(),
+    //ES6 can have one if key:value are the same
+    title,
+    completed: false,
+  }
+  this.setState({ todos: [...this.state.todos, newTodo]})
+}
+
 
   render() {
 
     return (
       <div className="App">
-        <Header /> 
-        <AddTodo /> 
-        <Todos 
-          do={this.state.todos} 
-          markComplete={ this.markComplete } 
-          delTodo={this.delTodo}
-        />   
+        <div className="container">
+          <Header /> 
+          <Todos 
+            do={this.state.todos} 
+            markComplete={ this.markComplete } 
+            delTodo={this.delTodo}
+          />   
+          <br />
+          <AddTodo addTodo={this.addTodo} /> 
         </div>
+      </div>
     );
   }
 }
