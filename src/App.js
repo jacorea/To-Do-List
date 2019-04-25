@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import {BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 import Todos from "./components/Todos"
 import AddTodo from "./components/AddTodo"
+import About from "./components/pages/About"
 import Header from './layout/Header'
 
 //used to generate a random id
@@ -63,18 +65,26 @@ addTodo = (title) => {
   render() {
 
     return (
-      <div className="App">
-        <div className="container">
-          <Header /> 
-          <Todos 
-            do={this.state.todos} 
-            markComplete={ this.markComplete } 
-            delTodo={this.delTodo}
-          />   
-          <br />
-          <AddTodo addTodo={this.addTodo} /> 
+      <Router>
+        <div className="App">
+          <div className="container">
+            <Header /> 
+            
+            <Route exact path ="/" render={props => (
+              <React.Fragment>
+                <Todos 
+                  do={this.state.todos} 
+                  markComplete={ this.markComplete } 
+                  delTodo={this.delTodo}
+                />   
+                <br />
+                <AddTodo addTodo={this.addTodo} /> 
+              </React.Fragment>
+            )}/>
+            <Route path="/about" component={About}/>
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
